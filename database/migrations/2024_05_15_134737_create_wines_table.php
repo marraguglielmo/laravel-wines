@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('wines', function (Blueprint $table) {
             $table->id();
-            $table->string('winery', 30)->nullable();
+            $table->string('winery', 50)->nullable();
             $table->string('name', 100);
             $table->string('slug')->unique();
             $table->decimal('rating_average', 2, 1);
