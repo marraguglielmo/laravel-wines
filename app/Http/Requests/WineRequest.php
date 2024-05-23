@@ -25,7 +25,7 @@ class WineRequest extends FormRequest
             'name' => 'required|min:5|max:100',
             'winery' => 'max:50',
             'image' => 'required|min:5|max:25500',
-            'rating_average' => 'required|min:1|max:2',
+            'rating_average' => 'required|min:1|max:3',
             'rating_reviews' => 'required|min:1|max:30',
             'location' => 'required|min:3|max:80',
 

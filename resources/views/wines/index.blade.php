@@ -24,8 +24,12 @@
                             <span>voto: {{ $wine->rating_average }}</span>
                             <p>{{ $wine->rating_reviews }}</p>
                             <p class="location">{{ $wine->location }}</p>
-                            <a type="" class="btn btn-warning" href="{{route('wines.show' , $wine)}}">
+
+                            <a type="" class="btn btn-success" href="{{route('wines.show' , $wine)}}">
                                 <i class="fa-solid fa-face-grin-tongue-wink"></i>
+                            </a>
+                            <a type="" class="btn btn-warning" href="{{route('wines.edit' , $wine)}}">
+                                <i class="fa-solid fa-face-frown"></i>
                             </a>
 
                             <form action="{{route('wines.destroy', $wine)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to delete {{$wine->name}}?')">
@@ -34,7 +38,7 @@
 
 
                                 <button type="submit" class="btn btn-danger">
-                                    <i class="fa-solid fa-trash"></i>
+                                    <i class="fa-solid fa-face-sad-cry"></i>
                                 </button>
                             </form>
                         </div>

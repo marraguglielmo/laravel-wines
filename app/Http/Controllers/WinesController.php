@@ -62,9 +62,19 @@ class WinesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(WineRequest $request, Wine $wine)
     {
-        //
+        $form_data = $request->all();
+
+        if($form_data['name'] === $wine->name){
+            $form_data['slug'] = $wine->slug;
+        }else{
+            $form_data['slug'] = Helper::generateSlug($form_data['name'], new Wine());
+        }
+
+        $wine->update($form_data);
+
+        return redirect()->route('wines.show', $wine);
     }
 
     /**

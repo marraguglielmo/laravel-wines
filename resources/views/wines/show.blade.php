@@ -11,9 +11,14 @@
         @method('DELETE')
 
 
-        <button type="submit" class="btn btn-danger">
-            <i class="fa-solid fa-trash"></i>
+        <button type="submit" class="btn btn-danger me-3">
+            <i class="fa-solid fa-face-sad-cry"></i>
         </button>
+
+        <a type="" class="btn btn-primary" href="{{route('wines.index' , $wine)}}">
+            <i class="fa-solid fa-face-grin-beam-sweat"></i>
+        </a>
+
     </form>
 
 </div>
@@ -30,7 +35,8 @@
         <p>Enoteca: {{$wine->winery}}</p>
         <p>Voto: {{$wine->rating_average}}</p>
         <p>Recensioni totali: {{$wine->rating_reviews}}</p>
-    </div>
+
+            </div>
 
 
 
