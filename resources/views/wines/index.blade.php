@@ -3,6 +3,15 @@
 @section('content')
     <h1 class="text-center my-5">Wines</h1>
 
+    @if (session('deleted'))
+
+
+    <div class="alert alert-success" role="alert">
+       {{ session('deleted') }}
+    </div>
+
+    @endif
+
     <div class="container">
         <div class="row row-cols-3">
             @foreach ($wines as $wine)
@@ -18,6 +27,16 @@
                             <a type="" class="btn btn-warning" href="{{route('wines.show' , $wine)}}">
                                 <i class="fa-solid fa-face-grin-tongue-wink"></i>
                             </a>
+
+                            <form action="{{route('wines.destroy', $wine)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to delete {{$wine->name}}?')">
+                                @csrf
+                                @method('DELETE')
+
+
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

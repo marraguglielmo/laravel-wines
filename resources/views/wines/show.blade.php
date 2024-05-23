@@ -2,8 +2,19 @@
 
 @section('content')
 
-<div class="container py-5 ">
-    <h2>{{ $wine->name }}</h2>
+<div class="container py-5 d-flex">
+    <h2 class="me-3">{{ $wine->name }}</h2>
+
+
+    <form action="{{route('wines.destroy', $wine)}}" method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure want to delete {{$wine->name}}?')">
+        @csrf
+        @method('DELETE')
+
+
+        <button type="submit" class="btn btn-danger">
+            <i class="fa-solid fa-trash"></i>
+        </button>
+    </form>
 
 </div>
 <div class="container my-3 d-flex">

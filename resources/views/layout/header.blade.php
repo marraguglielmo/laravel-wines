@@ -14,7 +14,7 @@
                         <a class="nav-link" href="{{route('wines.index')}}">List Wines</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New wine</a>
+                        <a class="nav-link" href="{{route('wines.create')}}">New wine</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">List Winery</a>

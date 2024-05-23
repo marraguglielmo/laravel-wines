@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wine;
-
+use App\Http\Requests\WineRequest;
+use App\Functions\Helper;
 class WinesController extends Controller
 {
     /**
@@ -21,15 +22,24 @@ class WinesController extends Controller
      */
     public function create()
     {
-        //
+        return view('wines.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(WineRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $new_wine = new Wine();
+
+        $form_data['slug'] = Helper::generateSlug($form_data['name'], new Wine());
+        $new_wine->fill($form_data);
+        $new_wine->save();
+
+        return redirect()->route('wines.show', $new_wine);
+
     }
 
     /**
@@ -44,9 +54,9 @@ class WinesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Wine $wine)
     {
-        //
+        return view('wines.edit', compact('wine'));
     }
 
     /**
@@ -60,8 +70,9 @@ class WinesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Wine $wine)
     {
-        //
+        $wine->delete();
+        return redirect()->route('wines.index')->with('deleted', 'Wine ' . $wine->name . ' was successfully deleted');
     }
 }
