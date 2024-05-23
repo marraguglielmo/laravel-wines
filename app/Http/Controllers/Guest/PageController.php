@@ -8,11 +8,12 @@ use App\Models\Wine;
 
 class PageController extends Controller
 {
-    public function index()
-    {
 
-        $wines = Wine::paginate(20);
 
-        return view('home', compact('wines'));
+    public function index(){
+
+        $num_wines = Wine::count();
+        return view('home', compact(('num_wines')));
     }
+
 }

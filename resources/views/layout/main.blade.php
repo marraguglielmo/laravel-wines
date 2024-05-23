@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+    @include('layout.header')
     <main>
         @yield('content')
     </main>
